@@ -169,4 +169,9 @@ public class Prostor {
     public Collection<Prostor> getVychody() {
         return Collections.unmodifiableCollection(vychody);
     }
+
+    @Override
+    public String toString() {
+        return getNazev();
+    }
 }
