@@ -1,5 +1,14 @@
 package cz.vse.seka01_semestralka.logika;
 
+import cz.vse.seka01_semestralka.main.Pozorovatel;
+import cz.vse.seka01_semestralka.main.PredmetPozorovani;
+import cz.vse.seka01_semestralka.main.ZmenaHry;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 /**
  *  Třída Hra - třída představující logiku adventury.
  * 
@@ -16,6 +25,7 @@ public class Hra implements IHra {
     private SeznamPrikazu platnePrikazy;    // obsahuje seznam přípustných příkazů
     private HerniPlan herniPlan;
     private boolean konecHry = false;
+    private Map<ZmenaHry, Set<Pozorovatel>> seznamPozorovatelu = new HashMap<>();
 
     /**
      *  Vytváří hru a inicializuje místnosti (prostřednictvím třídy HerniPlan) a seznam platných příkazů.
@@ -26,6 +36,10 @@ public class Hra implements IHra {
         platnePrikazy.vlozPrikaz(new PrikazNapoveda(platnePrikazy));
         platnePrikazy.vlozPrikaz(new PrikazJdi(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazKonec(this));
+        for (ZmenaHry zmenaHry : ZmenaHry.values())
+        {
+            seznamPozorovatelu.put(zmenaHry, new HashSet<>());
+        }
     }
 
     /**
@@ -86,8 +100,10 @@ public class Hra implements IHra {
      *  
      *  @param  konecHry  hodnota false= konec hry, true = hra pokračuje
      */
-    void setKonecHry(boolean konecHry) {
+    void setKonecHry(boolean konecHry)
+    {
         this.konecHry = konecHry;
+        upozorniPozorovatele(ZmenaHry.KONEC_HRY);
     }
     
      /**
@@ -99,6 +115,17 @@ public class Hra implements IHra {
      public HerniPlan getHerniPlan(){
         return herniPlan;
      }
-    
+
+    @Override
+    public void registruj(ZmenaHry zmenaHry, Pozorovatel pozorovatel)
+    {
+        seznamPozorovatelu.get(zmenaHry).add(pozorovatel);
+    }
+    private void upozorniPozorovatele(ZmenaHry zmenaHry) {
+        for (Pozorovatel pozorovatel : seznamPozorovatelu.get(zmenaHry))
+        {
+            pozorovatel.aktualizuj();
+        }
+    }
 }
 
