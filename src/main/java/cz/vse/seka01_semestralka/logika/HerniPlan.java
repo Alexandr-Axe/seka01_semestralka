@@ -1,6 +1,12 @@
 package cz.vse.seka01_semestralka.logika;
 
 
+import cz.vse.seka01_semestralka.main.Pozorovatel;
+import cz.vse.seka01_semestralka.main.PredmetPozorovani;
+
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  *  Class HerniPlan - třída představující mapu a stav adventury.
  * 
@@ -12,11 +18,12 @@ package cz.vse.seka01_semestralka.logika;
  *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
  *@version    pro školní rok 2016/2017
  */
-public class HerniPlan {
+public class HerniPlan implements PredmetPozorovani {
     
     private Prostor aktualniProstor;
-    
-     /**
+    private Set<Pozorovatel> seznamPozorovatelu = new HashSet<>();
+
+    /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
      *  Jako výchozí aktuální prostor nastaví halu.
      */
@@ -64,8 +71,17 @@ public class HerniPlan {
      *
      *@param  prostor nový aktuální prostor
      */
-    public void setAktualniProstor(Prostor prostor) {
+    public void setAktualniProstor(Prostor prostor)
+    {
        aktualniProstor = prostor;
+       for (Pozorovatel pozorovatel : seznamPozorovatelu)
+       {
+           pozorovatel.aktualizuj();
+       }
     }
 
+    @Override
+    public void registruj(Pozorovatel pozorovatel) {
+        seznamPozorovatelu.add(pozorovatel);
+    }
 }
