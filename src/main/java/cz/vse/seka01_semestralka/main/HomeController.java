@@ -2,6 +2,7 @@ package cz.vse.seka01_semestralka.main;
 
 import cz.vse.seka01_semestralka.logika.Hra;
 import cz.vse.seka01_semestralka.logika.IHra;
+import cz.vse.seka01_semestralka.logika.PrikazJdi;
 import cz.vse.seka01_semestralka.logika.Prostor;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -9,13 +10,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
 import java.util.Optional;
 
 public class HomeController implements Pozorovatel {
 
     @FXML
-    private ListView panelVychodu;
+    private ListView<Prostor> panelVychodu;
     @FXML
     private Button tlacitkoPoslat;
     @FXML
@@ -43,14 +45,20 @@ public class HomeController implements Pozorovatel {
     @FXML
     private void poslatVstup(ActionEvent actionEvent) {
         String prikaz = vstup.getText();
+        vstup.clear();
+        zpracujPrikaz(prikaz);
+    }
+
+    private void zpracujPrikaz(String prikaz) {
         vystup.appendText("> " + prikaz + "\n");
         String vysledek = hra.zpracujPrikaz(prikaz);
         vystup.appendText(vysledek + "\n\n");
-        vstup.clear();
+
         if (hra.konecHry()){
             vystup.appendText(hra.vratEpilog());
             vstup.setDisable(true);
             tlacitkoPoslat.setDisable(true);
+            panelVychodu.setDisable(true);
         }
     }
 
@@ -64,7 +72,17 @@ public class HomeController implements Pozorovatel {
     }
 
     @Override
-    public void aktualizuj() {
+    public void aktualizuj()
+    {
         aktualizujSeznamVychodu();
+    }
+
+    @FXML
+    private void klikPanelVychodu(MouseEvent mouseEvent)
+    {
+        Prostor cil = panelVychodu.getSelectionModel().getSelectedItem();
+        if (cil == null) return;
+        String prikaz = PrikazJdi.NAZEV + " " + cil;
+        zpracujPrikaz(prikaz);
     }
 }
