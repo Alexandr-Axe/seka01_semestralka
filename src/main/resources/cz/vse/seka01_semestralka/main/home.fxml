@@ -9,9 +9,13 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.seka01_semestralka.main.HomeController">
@@ -20,7 +24,8 @@
     </columnConstraints>
     <rowConstraints>
         <RowConstraints valignment="CENTER" vgrow="NEVER" />
-        <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints valignment="CENTER" vgrow="NEVER" />
+        <RowConstraints prefHeight="1.0" vgrow="SOMETIMES" />
         <RowConstraints vgrow="NEVER" />
     </rowConstraints>
     <children>
@@ -29,13 +34,13 @@
                 <Menu mnemonicParsing="false" text="Hra">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#ukoncitHru" text="Ukončit" />
-                        <MenuItem text="Aktualizuj" onAction="#aktualizujSeznamVychodu"/>
+                        <MenuItem onAction="#aktualizujSeznamVychodu" text="Aktualizuj" />
                     </items>
                 </Menu>
             </menus>
 
         </MenuBar>
-        <HBox spacing="10.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
+        <HBox spacing="10.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
             <children>
                 <TextField fx:id="vstup" onAction="#poslatVstup" HBox.hgrow="ALWAYS">
                     <padding>
@@ -55,9 +60,9 @@
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
         </HBox>
-      <SplitPane dividerPositions="0.3" GridPane.rowIndex="1">
+      <SplitPane dividerPositions="0.3" GridPane.rowIndex="2">
          <items>
-            <ListView fx:id="panelVychodu" onMouseClicked="#klikPanelVychodu"/>
+            <ListView fx:id="panelVychodu" onMouseClicked="#klikPanelVychodu" />
              <TextArea fx:id="vystup" editable="false">
                  <padding>
                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -65,5 +70,27 @@
              </TextArea>
          </items>
       </SplitPane>
+      <TitledPane text="Mapa" GridPane.rowIndex="1">
+         <content>
+            <HBox alignment="TOP_CENTER">
+               <children>
+                  <Pane>
+                     <children>
+                        <ImageView fitHeight="214.0" fitWidth="343.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@prostory/herniPlan.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="68.0" fitWidth="52.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@karcoolka.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+         </content>
+      </TitledPane>
     </children>
 </GridPane>
