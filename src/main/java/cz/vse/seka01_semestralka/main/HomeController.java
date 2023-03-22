@@ -9,9 +9,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Point2D;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 public class HomeController {
@@ -28,13 +33,35 @@ public class HomeController {
     private IHra hra = new Hra();
     private ObservableList<Prostor> seznamVychodu = FXCollections.observableArrayList();
     @FXML
+    public ImageView hrac;
+    private Map<String, Point2D> souradniceProstoru = new HashMap<>();
+
+    @FXML
     private void initialize(){
         vystup.appendText(hra.vratUvitani() + "\n\n");
         Platform.runLater(() -> vstup.requestFocus());
         panelVychodu.setItems(seznamVychodu);
-        hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> aktualizujSeznamVychodu());
+        hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> {
+            aktualizujSeznamVychodu();
+            aktualizujPolohuHrace();
+        });
         hra.registruj(ZmenaHry.KONEC_HRY, () -> aktualizujKonecHry());
         aktualizujSeznamVychodu();
+        vlozSouradnice();
+    }
+    private void aktualizujPolohuHrace()
+    {
+        String prostor = hra.getHerniPlan().getAktualniProstor().getNazev();
+        hrac.setLayoutX(souradniceProstoru.get(prostor).getX());
+        hrac.setLayoutY(souradniceProstoru.get(prostor).getY());
+    }
+    private void vlozSouradnice()
+    {
+        souradniceProstoru.put("domeček", new Point2D(14, 14));
+        souradniceProstoru.put("les", new Point2D(100, 14));
+        souradniceProstoru.put("hluboký_les", new Point2D(186, 14));
+        souradniceProstoru.put("jeskyně", new Point2D(271, 14));
+        souradniceProstoru.put("chaloupka", new Point2D(190, 100));
     }
     @FXML
     private void aktualizujSeznamVychodu()
