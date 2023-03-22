@@ -11,9 +11,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.web.WebView;
+import javafx.stage.Stage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,6 +51,7 @@ public class HomeController {
         hra.registruj(ZmenaHry.KONEC_HRY, () -> aktualizujKonecHry());
         aktualizujSeznamVychodu();
         vlozSouradnice();
+        panelVychodu.setCellFactory(param -> new ListCellProstor());
     }
     private void aktualizujPolohuHrace()
     {
@@ -107,7 +111,17 @@ public class HomeController {
     {
         Prostor cil = panelVychodu.getSelectionModel().getSelectedItem();
         if (cil == null) return;
-        String prikaz = PrikazJdi.NAZEV + " " + cil;
+        String prikaz = PrikazJdi.NAZEV + " " + cil.getNazev();
         zpracujPrikaz(prikaz);
+    }
+    @FXML
+    private void napovedaKlik(ActionEvent actionEvent)
+    {
+        Stage napovedaStage = new Stage();
+        WebView wv = new WebView();
+        Scene napovedaScena = new Scene(wv);
+        napovedaStage.setScene(napovedaScena);
+        napovedaStage.show();
+        wv.getEngine().load(getClass().getResource("napoveda.html").toExternalForm());
     }
 }
