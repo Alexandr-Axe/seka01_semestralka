@@ -101,7 +101,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ListView fx:id="panelPolozky" maxHeight="100.0"/>
+                              <ListView fx:id="panelPolozek" maxHeight="100.0"/>
                            </children></AnchorPane>
                      </content>
                   </TitledPane>

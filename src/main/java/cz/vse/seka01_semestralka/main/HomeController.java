@@ -25,7 +25,8 @@ public class HomeController {
     private ListView<Prostor> panelVychodu;
     @FXML
     private ListView<Polozka> panelBrasny;
-
+    @FXML
+    private ListView<Polozka> panelPolozek;
     @FXML
     private Button tlacitkoPoslat;
     @FXML
@@ -36,6 +37,7 @@ public class HomeController {
     private IHra hra = new Hra();
     private ObservableList<Prostor> seznamVychodu = FXCollections.observableArrayList();
     private ObservableList<Polozka> obsahBrasny = FXCollections.observableArrayList();
+    private ObservableList<Polozka> obsahProstoru = FXCollections.observableArrayList();
     @FXML
     public ImageView hrac;
     private Map<String, Point2D> souradniceProstoru = new HashMap<>();
@@ -45,6 +47,7 @@ public class HomeController {
         vystup.appendText(hra.vratUvitani() + "\n\n");
         Platform.runLater(() -> vstup.requestFocus());
         panelBrasny.setItems(obsahBrasny);
+        panelPolozek.setItems(obsahProstoru);
         panelVychodu.setItems(seznamVychodu);
         hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> {
             aktualizujSeznamVychodu();
@@ -53,8 +56,15 @@ public class HomeController {
         hra.registruj(ZmenaHry.KONEC_HRY, () -> aktualizujKonecHry());
         aktualizujSeznamVychodu();
         aktualizujObsahBrasny();
+        aktualizujObsahProstoru();
         vlozSouradnice();
         panelVychodu.setCellFactory(param -> new ListCellProstor());
+    }
+
+    private void aktualizujObsahProstoru()
+    {
+        obsahProstoru.clear();
+        obsahProstoru.addAll(hra.getHerniPlan().getAktualniProstor().getSeznamPolozek());
     }
 
     private void aktualizujObsahBrasny()
@@ -106,6 +116,7 @@ public class HomeController {
         String vysledek = hra.zpracujPrikaz(prikaz);
         vystup.appendText(vysledek + "\n\n");
         aktualizujObsahBrasny();
+        aktualizujObsahProstoru();
     }
 
     public void ukoncitHru(ActionEvent actionEvent) {

@@ -253,7 +253,12 @@ public class Prostor {
         return vybranaPostava;
     }
     @Override
-    public String toString() {
+    public String toString()
+    {
         return getNazev();
+    }
+    public Collection<Polozka> getSeznamPolozek()
+    {
+        return seznamPolozek;
     }
 }
