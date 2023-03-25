@@ -1,9 +1,6 @@
 package cz.vse.seka01_semestralka.main;
 
-import cz.vse.seka01_semestralka.logika.Hra;
-import cz.vse.seka01_semestralka.logika.IHra;
-import cz.vse.seka01_semestralka.logika.PrikazJdi;
-import cz.vse.seka01_semestralka.logika.Prostor;
+import cz.vse.seka01_semestralka.logika.*;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,6 +24,9 @@ public class HomeController {
     @FXML
     private ListView<Prostor> panelVychodu;
     @FXML
+    private ListView<Polozka> panelBrasny;
+
+    @FXML
     private Button tlacitkoPoslat;
     @FXML
     private TextArea vystup;
@@ -35,6 +35,7 @@ public class HomeController {
 
     private IHra hra = new Hra();
     private ObservableList<Prostor> seznamVychodu = FXCollections.observableArrayList();
+    private ObservableList<Polozka> obsahBrasny = FXCollections.observableArrayList();
     @FXML
     public ImageView hrac;
     private Map<String, Point2D> souradniceProstoru = new HashMap<>();
@@ -43,6 +44,7 @@ public class HomeController {
     private void initialize(){
         vystup.appendText(hra.vratUvitani() + "\n\n");
         Platform.runLater(() -> vstup.requestFocus());
+        panelBrasny.setItems(obsahBrasny);
         panelVychodu.setItems(seznamVychodu);
         hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> {
             aktualizujSeznamVychodu();
@@ -50,9 +52,17 @@ public class HomeController {
         });
         hra.registruj(ZmenaHry.KONEC_HRY, () -> aktualizujKonecHry());
         aktualizujSeznamVychodu();
+        aktualizujObsahBrasny();
         vlozSouradnice();
         panelVychodu.setCellFactory(param -> new ListCellProstor());
     }
+
+    private void aktualizujObsahBrasny()
+    {
+        obsahBrasny.clear();
+        obsahBrasny.addAll(hra.getHerniPlan().getBrasna().getSeznamPolozek());
+    }
+
     private void aktualizujPolohuHrace()
     {
         String prostor = hra.getHerniPlan().getAktualniProstor().getNazev();
@@ -95,6 +105,7 @@ public class HomeController {
         vystup.appendText("> " + prikaz + "\n");
         String vysledek = hra.zpracujPrikaz(prikaz);
         vystup.appendText(vysledek + "\n\n");
+        aktualizujObsahBrasny();
     }
 
     public void ukoncitHru(ActionEvent actionEvent) {

@@ -1,5 +1,6 @@
 package cz.vse.seka01_semestralka.logika;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -79,11 +80,15 @@ public class Brasna {
      *
      *  @return udává seznam položek v jednom Stringu
      */
-    public String seznamPolozek(){
+    public String seznamPolozek()
+    {
         StringBuilder seznam = new StringBuilder();
         for (Polozka neco: obsahBrasny){
             seznam.append(neco.getJmeno()).append(" ");
         }
         return seznam.toString();
+    }
+    public Collection<Polozka> getSeznamPolozek() {
+        return obsahBrasny;
     }
 }

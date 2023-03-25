@@ -58,5 +58,12 @@ public class Polozka {
      *
      * @return true, pokud je věc přenositelná, jinak false
      */
-    public boolean muzuPrenest(){return lzePrenest;}
+    public boolean muzuPrenest()
+    {
+        return lzePrenest;
+    }
+    @Override
+    public String toString(){
+        return jmeno;
+    }
 }
