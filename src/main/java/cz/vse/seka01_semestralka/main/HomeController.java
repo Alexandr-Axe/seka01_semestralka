@@ -146,4 +146,20 @@ public class HomeController {
         napovedaStage.show();
         wv.getEngine().load(getClass().getResource("napoveda.html").toExternalForm());
     }
+    @FXML
+    private void klikPanelPolozky(MouseEvent mouseEvent)
+    {
+        Polozka cil = panelPolozek.getSelectionModel().getSelectedItem();
+        if (cil == null) return;
+        String prikaz = PrikazSeber.JMENO + " " + cil.getJmeno();
+        zpracujPrikaz(prikaz);
+    }
+    @FXML
+    private void klikPanelBrasna(MouseEvent mouseEvent)
+    {
+        Polozka cil = panelBrasny.getSelectionModel().getSelectedItem();
+        if (cil == null) return;
+        String prikaz = PrikazPoloz.JMENO + " " + cil.getJmeno();
+        zpracujPrikaz(prikaz);
+    }
 }

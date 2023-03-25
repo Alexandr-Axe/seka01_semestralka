@@ -7,7 +7,7 @@ public class PrikazSeber implements IPrikaz{
     /**
      Nastavení toho jak se bude příkaz volat
      */
-    private static final String JMENO = "seber";
+    public static final String JMENO = "seber";
     /**
      * herní plán
      */
@@ -18,7 +18,8 @@ public class PrikazSeber implements IPrikaz{
      */
 
 
-    public PrikazSeber(HerniPlan plan) {
+    public PrikazSeber(HerniPlan plan)
+    {
         this.plan = plan;
     }
 
@@ -68,7 +69,8 @@ public class PrikazSeber implements IPrikaz{
      *  @ return nazev prikazu
      */
     @Override
-    public String getNazev() {
+    public String getNazev()
+    {
         return JMENO;
     }
 }

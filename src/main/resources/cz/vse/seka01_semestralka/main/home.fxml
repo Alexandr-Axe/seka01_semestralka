@@ -75,11 +75,11 @@
          <content>
             <HBox alignment="TOP_CENTER">
                <children>
-                  <TitledPane alignment="TOP_LEFT" animated="true" maxHeight="100.0" text="Brašna">
+                  <TitledPane alignment="TOP_LEFT" animated="true" maxHeight="125.0" text="Brašna">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ListView fx:id="panelBrasny" maxHeight="100.0"/>
+                              <ListView fx:id="panelBrasny" maxHeight="125.0" onMouseClicked="#klikPanelBrasna"/>
                            </children></AnchorPane>
                      </content>
                   </TitledPane>
@@ -101,7 +101,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ListView fx:id="panelPolozek" maxHeight="100.0"/>
+                              <ListView fx:id="panelPolozek" maxHeight="100.0" onMouseClicked="#klikPanelPolozky" />
                            </children></AnchorPane>
                      </content>
                   </TitledPane>

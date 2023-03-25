@@ -7,7 +7,7 @@ public class PrikazPoloz implements IPrikaz{
     /**
      * příkaz polož se volá klíčovým slovem "polož"
      */
-    private static final String JMENO = "poloz";
+    public static final String JMENO = "poloz";
     /**
      * herní plán
      */
@@ -49,7 +49,8 @@ public class PrikazPoloz implements IPrikaz{
 
 
     @Override
-    public String getNazev() {
+    public String getNazev()
+    {
         return JMENO;
     }
 
