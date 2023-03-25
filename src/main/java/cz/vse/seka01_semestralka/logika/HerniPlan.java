@@ -25,12 +25,15 @@ public class HerniPlan implements PredmetPozorovani {
     
     private Prostor aktualniProstor;
     private Map<ZmenaHry, Set<Pozorovatel>> seznamPozorovatelu = new HashMap<>();
+    private Prostor vyherniProstor;
+    private Brasna brasna;
 
     /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
      *  Jako výchozí aktuální prostor nastaví halu.
      */
     public HerniPlan() {
+        brasna = new Brasna(4);
         zalozProstoryHry();
         for (ZmenaHry zmenaHry : ZmenaHry.values())
         {
@@ -48,7 +51,15 @@ public class HerniPlan implements PredmetPozorovani {
         Prostor jeskyne = new Prostor("jeskyně","stará plesnivá jeskyně");
         Prostor les = new Prostor("les","les s jahodami, malinami a pramenem vody");
         Prostor hlubokyLes = new Prostor("hluboký_les","temný les, ve kterém lze potkat vlka");
-        
+
+        Postava karkulka = new Postava("karkulka");
+        Postava vlk = new Postava("vlk");
+        Postava babicka = new Postava("babicka");
+
+        domecek.vlozPostavu(karkulka);
+        chaloupka.vlozPostavu(babicka);
+        hlubokyLes.vlozPostavu(vlk);
+
         // přiřazují se průchody mezi prostory (sousedící prostory)
         domecek.setVychod(les);
         les.setVychod(domecek);
@@ -58,6 +69,16 @@ public class HerniPlan implements PredmetPozorovani {
         hlubokyLes.setVychod(chaloupka);
         jeskyne.setVychod(hlubokyLes);
         chaloupka.setVychod(hlubokyLes);
+
+        Polozka babovka = new Polozka("babovka", true);
+        Polozka maliny = new Polozka("maliny", true);
+        Polozka nuz = new Polozka("nuz", true);
+        Polozka proteza = new Polozka("proteza", true);
+
+        domecek.vlozPolozku(babovka);
+        domecek.vlozPolozku(nuz);
+        chaloupka.vlozPolozku(proteza);
+        les.vlozPolozku(maliny);
                 
         aktualniProstor = domecek;  // hra začíná v domečku       
     }
@@ -68,7 +89,8 @@ public class HerniPlan implements PredmetPozorovani {
      *@return     aktuální prostor
      */
     
-    public Prostor getAktualniProstor() {
+    public Prostor getAktualniProstor()
+    {
         return aktualniProstor;
     }
     
@@ -93,5 +115,13 @@ public class HerniPlan implements PredmetPozorovani {
         {
             pozorovatel.aktualizuj();
         }
+    }
+    public Prostor getVyherniProstor()
+    {
+        return vyherniProstor;
+    }
+    public Brasna getBrasna()
+    {
+        return brasna;
     }
 }

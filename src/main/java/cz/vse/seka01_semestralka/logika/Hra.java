@@ -26,6 +26,7 @@ public class Hra implements IHra {
     private HerniPlan herniPlan;
     private boolean konecHry = false;
     private Map<ZmenaHry, Set<Pozorovatel>> seznamPozorovatelu = new HashMap<>();
+    private String epilog = "Děkuji, že jste si zahráli upravenou verzi Karcoolky!\n";
 
     /**
      *  Vytváří hru a inicializuje místnosti (prostřednictvím třídy HerniPlan) a seznam platných příkazů.
@@ -36,6 +37,13 @@ public class Hra implements IHra {
         platnePrikazy.vlozPrikaz(new PrikazNapoveda(platnePrikazy));
         platnePrikazy.vlozPrikaz(new PrikazJdi(herniPlan));
         platnePrikazy.vlozPrikaz(new PrikazKonec(this));
+
+        platnePrikazy.vlozPrikaz(new PrikazSeber(herniPlan));
+        platnePrikazy.vlozPrikaz(new PrikazPoloz(herniPlan));
+        platnePrikazy.vlozPrikaz(new PrikazBrasna(herniPlan));
+        platnePrikazy.vlozPrikaz(new PrikazPouzij(herniPlan, this));
+        platnePrikazy.vlozPrikaz(new PrikazProstor(herniPlan));
+
         for (ZmenaHry zmenaHry : ZmenaHry.values())
         {
             seznamPozorovatelu.put(zmenaHry, new HashSet<>());
@@ -56,14 +64,16 @@ public class Hra implements IHra {
     /**
      *  Vrátí závěrečnou zprávu pro hráče.
      */
-    public String vratEpilog() {
-        return "Dík, že jste si zahráli.  Ahoj.";
+    public String vratEpilog()
+    {
+        return epilog;
     }
     
     /** 
      * Vrací true, pokud hra skončila.
      */
-     public boolean konecHry() {
+     public boolean konecHry()
+     {
         return konecHry;
     }
 
@@ -75,7 +85,8 @@ public class Hra implements IHra {
      *@param  radek  text, který zadal uživatel jako příkaz do hry.
      *@return          vrací se řetězec, který se má vypsat na obrazovku
      */
-     public String zpracujPrikaz(String radek) {
+     public String zpracujPrikaz(String radek)
+     {
         String [] slova = radek.split("[ \t]+");
         String slovoPrikazu = slova[0];
         String []parametry = new String[slova.length-1];
@@ -105,6 +116,9 @@ public class Hra implements IHra {
         this.konecHry = konecHry;
         upozorniPozorovatele(ZmenaHry.KONEC_HRY);
     }
+    public void setEpilog(String epilog) {
+        this.epilog = epilog;
+    }
     
      /**
      *  Metoda vrátí odkaz na herní plán, je využita hlavně v testech,
@@ -112,7 +126,8 @@ public class Hra implements IHra {
      *  
      *  @return     odkaz na herní plán
      */
-     public HerniPlan getHerniPlan(){
+     public HerniPlan getHerniPlan()
+     {
         return herniPlan;
      }
 
@@ -121,7 +136,8 @@ public class Hra implements IHra {
     {
         seznamPozorovatelu.get(zmenaHry).add(pozorovatel);
     }
-    private void upozorniPozorovatele(ZmenaHry zmenaHry) {
+    private void upozorniPozorovatele(ZmenaHry zmenaHry)
+    {
         for (Pozorovatel pozorovatel : seznamPozorovatelu.get(zmenaHry))
         {
             pozorovatel.aktualizuj();

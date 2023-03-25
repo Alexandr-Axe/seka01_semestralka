@@ -1,10 +1,6 @@
 package cz.vse.seka01_semestralka.logika;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Set;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -24,6 +20,8 @@ public class Prostor {
     private String nazev;
     private String popis;
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
+    private List<Polozka> seznamPolozek;
+    private List<Postava> seznamPostav;
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
@@ -37,6 +35,8 @@ public class Prostor {
         this.nazev = nazev;
         this.popis = popis;
         vychody = new HashSet<>();
+        seznamPolozek = new ArrayList<Polozka>();
+        seznamPostav = new ArrayList<Postava>();
     }
 
     /**
@@ -49,7 +49,8 @@ public class Prostor {
      * @param vedlejsi prostor, který sousedi s aktualnim prostorem.
      *
      */
-    public void setVychod(Prostor vedlejsi) {
+    public void setVychod(Prostor vedlejsi)
+    {
         vychody.add(vedlejsi);
     }
 
@@ -117,7 +118,9 @@ public class Prostor {
      * @return Dlouhý popis prostoru
      */
     public String dlouhyPopis() {
-        return "Jsi v mistnosti/prostoru " + popis + ".\n"
+        return "Nacházíš se v " + popis + "\n"
+                + "Položky: " + seznamPolozek() + "\n"
+                + "Postava: " + seznamPostav() + "\n"
                 + popisVychodu();
     }
 
@@ -166,10 +169,89 @@ public class Prostor {
      * @return Nemodifikovatelná kolekce prostorů (východů), se kterými tento
      * prostor sousedí.
      */
-    public Collection<Prostor> getVychody() {
+    public Collection<Prostor> getVychody()
+    {
         return Collections.unmodifiableCollection(vychody);
     }
-
+    public void vlozPolozku(Polozka neco) {
+        seznamPolozek.add(neco);
+    }
+    public boolean obsahujePolozku(String jmenoPolozky) {
+        for (Polozka neco : seznamPolozek) {
+            if (neco.getJmeno().equals(jmenoPolozky)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    public Polozka vyberPolozku(String jmenoPolozky)
+    {
+        Polozka vybranaPolozka = null;
+        for (Polozka neco : seznamPolozek) {
+            if (neco.getJmeno().equals(jmenoPolozky))
+            {
+                vybranaPolozka = neco;
+            }
+        }
+        if (vybranaPolozka != null)
+        {
+            if (vybranaPolozka.muzuPrenest())
+            {
+                seznamPolozek.remove(vybranaPolozka);
+            }
+            else
+            {
+                vybranaPolozka = null;
+            }
+        }
+        return vybranaPolozka;
+    }
+    private String seznamPolozek(){
+        String seznam = "";
+        for (Polozka polozka : seznamPolozek){
+            seznam = seznam + polozka.getJmeno()+" ";
+        }
+        return seznam;
+    }
+    public void vlozPostavu(Postava nekdo)
+    {
+        seznamPostav.add(nekdo);
+    }
+    private String seznamPostav()
+    {
+        String seznam = "";
+        for (Postava nekdo : seznamPostav)
+        {
+            seznam = seznam + nekdo.getJmeno() + " ";
+        }
+        return seznam;
+    }
+    public boolean obsahujePostavu(String jmenoPostavy)
+    {
+        for (Postava nekdo : seznamPostav) {
+            if (nekdo.getJmeno().equals(jmenoPostavy))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public Postava vyberPostavu(String jmenoPostavy)
+    {
+        Postava vybranaPostava = null;
+        for (Postava postava : seznamPostav)
+        {
+            if (postava.getJmeno().equals(jmenoPostavy))
+            {
+                vybranaPostava = postava;
+            }
+        }
+        if (vybranaPostava != null)
+        {
+            seznamPostav.remove(vybranaPostava);
+        }
+        return vybranaPostava;
+    }
     @Override
     public String toString() {
         return getNazev();
