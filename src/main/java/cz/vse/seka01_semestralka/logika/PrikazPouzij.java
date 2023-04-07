@@ -7,7 +7,7 @@ public class PrikazPouzij implements IPrikaz{
     /**
      Nastavení toho jak se bude příkaz volat
      */
-    private static final String JMENO = "pouzij";
+    public static final String JMENO = "pouzij";
     /**
      * herní plán
      */
@@ -49,7 +49,7 @@ public class PrikazPouzij implements IPrikaz{
                    break;
             case "proteza":
                   if (plan.getAktualniProstor().obsahujePostavu(nazevUziteho)
-                  && nazevUziteho.equalsIgnoreCase("babicka"))
+                  && nazevUziteho.equalsIgnoreCase("karkulka"))
                   {
                       plan.getBrasna().vyndejZBrasny("proteza");
                       hra.setKonecHry(true);
@@ -72,9 +72,9 @@ public class PrikazPouzij implements IPrikaz{
                 {
                     plan.getBrasna().vyndejZBrasny("maliny");
                     hra.setKonecHry(true);
-                    return "Maliny ti udělaly dobře a dodaly energii.\n" +
+                    return "Maliny ti udělaly radost a dodaly energii.\n" +
                             "Cestou ti začíná být ale divně, pohled se ti mlží a už tolik energie nemáš.\n" +
-                            "Je normální, že se ti po malinách zastaví dech?";
+                            "Je normální, že se ti po styku s malinami zastaví dech?";
                 }
                 break;
             case "babovka":

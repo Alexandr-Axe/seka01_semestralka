@@ -124,6 +124,10 @@ public class HomeController {
         vstup.setDisable(hra.konecHry());
         tlacitkoPoslat.setDisable(hra.konecHry());
         panelVychodu.setDisable(hra.konecHry());
+        panelPostav.setDisable(hra.konecHry());
+        panelPolozek.setDisable(hra.konecHry());
+        panelBrasny.setDisable(hra.konecHry());
+
     }
 
     @FXML
@@ -134,9 +138,23 @@ public class HomeController {
     }
 
     private void zpracujPrikaz(String prikaz) {
-        vystup.appendText("> " + prikaz + "\n");
-        String vysledek = hra.zpracujPrikaz(prikaz);
-        vystup.appendText(vysledek + "\n\n");
+        String vysledek = "";
+        if (prikaz.equalsIgnoreCase("seber maliny"))
+        {
+            vystup.appendText("> " + prikaz + "\n");
+            vysledek = hra.zpracujPrikaz(prikaz);
+            vystup.appendText(vysledek + "\n\n");
+            prikaz = "pouzij maliny karkulka";
+            vystup.appendText("> " + prikaz + "\n");
+            vysledek = hra.zpracujPrikaz(prikaz);
+            vystup.appendText(vysledek + "\n\n");
+        }
+        else
+        {
+            vystup.appendText("> " + prikaz + "\n");
+            vysledek = hra.zpracujPrikaz(prikaz);
+            vystup.appendText(vysledek + "\n\n");
+        }
         aktualizujObsahBrasny();
         aktualizujObsahProstoru();
         aktualizujSeznamPostav();
@@ -204,6 +222,34 @@ public class HomeController {
     }
 
     public void klikPanelPostav(MouseEvent mouseEvent) {
-
+        Postava postava = panelPostav.getSelectionModel().getSelectedItem();
+        String prikaz = "";
+        boolean vysledek = false;
+        switch (postava.getJmeno())
+        {
+            case "vlk":
+                vysledek = hra.getHerniPlan().getBrasna().obsahujePolozku("nuz");
+                if (vysledek)
+                {
+                    prikaz = PrikazPouzij.JMENO + " nuz vlk";
+                }
+                break;
+            case "babicka":
+                vysledek = hra.getHerniPlan().getBrasna().obsahujePolozku("babovka");
+                if (vysledek)
+                {
+                    prikaz = PrikazPouzij.JMENO + " babovka babicka";
+                }
+                break;
+            case "karkulka":
+                vysledek = hra.getHerniPlan().getBrasna().obsahujePolozku("proteza");
+                if (vysledek)
+                {
+                    prikaz = PrikazPouzij.JMENO + " proteza karkulka";
+                }
+                break;
+        }
+        if (postava == null) return;
+        zpracujPrikaz(prikaz);
     }
 }

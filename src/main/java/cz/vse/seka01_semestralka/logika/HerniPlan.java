@@ -60,6 +60,12 @@ public class HerniPlan implements PredmetPozorovani {
         chaloupka.vlozPostavu(babicka);
         hlubokyLes.vlozPostavu(vlk);
 
+        chaloupka.vlozPostavu(karkulka);
+        hlubokyLes.vlozPostavu(karkulka);
+        jeskyne.vlozPostavu(karkulka);
+        les.vlozPostavu(karkulka);
+
+
         // přiřazují se průchody mezi prostory (sousedící prostory)
         domecek.setVychod(les);
         les.setVychod(domecek);
