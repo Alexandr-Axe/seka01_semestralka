@@ -31,6 +31,8 @@ public class HomeController {
     @FXML
     private ListView<Polozka> panelPolozek;
     @FXML
+    private ListView<Postava> panelPostav;
+    @FXML
     private Button tlacitkoPoslat;
     @FXML
     private TextArea vystup;
@@ -41,6 +43,7 @@ public class HomeController {
     private ObservableList<Prostor> seznamVychodu = FXCollections.observableArrayList();
     private ObservableList<Polozka> obsahBrasny = FXCollections.observableArrayList();
     private ObservableList<Polozka> obsahProstoru = FXCollections.observableArrayList();
+    private ObservableList<Postava> postavyProstoru = FXCollections.observableArrayList();
     /**
      * obrázek hráče
      */
@@ -55,6 +58,7 @@ public class HomeController {
         panelBrasny.setItems(obsahBrasny);
         panelPolozek.setItems(obsahProstoru);
         panelVychodu.setItems(seznamVychodu);
+        panelPostav.setItems(postavyProstoru);
         hra.getHerniPlan().registruj(ZmenaHry.ZMENA_MISTNOSTI, () -> {
             aktualizujSeznamVychodu();
             aktualizujPolohuHrace();
@@ -63,8 +67,16 @@ public class HomeController {
         aktualizujSeznamVychodu();
         aktualizujObsahBrasny();
         aktualizujObsahProstoru();
+        aktualizujSeznamPostav();
         vlozSouradnice();
         panelVychodu.setCellFactory(param -> new ListCellProstor());
+        panelBrasny.setCellFactory(param -> new ListCellPredmet());
+        panelPolozek.setCellFactory(param -> new ListCellPredmet());
+    }
+
+    private void aktualizujSeznamPostav() {
+        postavyProstoru.clear();
+        postavyProstoru.addAll(hra.getHerniPlan().getAktualniProstor().getSeznamPostav());
     }
 
     private void aktualizujObsahProstoru()
@@ -127,6 +139,7 @@ public class HomeController {
         vystup.appendText(vysledek + "\n\n");
         aktualizujObsahBrasny();
         aktualizujObsahProstoru();
+        aktualizujSeznamPostav();
     }
 
     /**
@@ -188,5 +201,9 @@ public class HomeController {
             aktualizujPolohuHrace();
             aktualizujKonecHry();
         }
+    }
+
+    public void klikPanelPostav(MouseEvent mouseEvent) {
+
     }
 }

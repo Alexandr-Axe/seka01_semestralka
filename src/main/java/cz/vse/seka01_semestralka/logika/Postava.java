@@ -30,4 +30,8 @@ public class Postava {
     {
         return jmeno;
     }
+    @Override
+    public String toString(){
+        return jmeno;
+    }
 }

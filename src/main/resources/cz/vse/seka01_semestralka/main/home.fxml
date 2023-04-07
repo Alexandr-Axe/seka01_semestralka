@@ -62,9 +62,10 @@
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
         </HBox>
-      <SplitPane dividerPositions="0.3" GridPane.rowIndex="2">
+      <SplitPane dividerPositions="0.3, 0.5" GridPane.rowIndex="2">
          <items>
             <ListView fx:id="panelVychodu" onMouseClicked="#klikPanelVychodu" />
+            <ListView fx:id="panelPostav" onMouseClicked="#klikPanelPostav" />
              <TextArea fx:id="vystup" editable="false">
                  <padding>
                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -76,11 +77,11 @@
          <content>
             <HBox alignment="TOP_CENTER">
                <children>
-                  <TitledPane alignment="TOP_LEFT" animated="true" maxHeight="125.0" text="Brašna">
+                  <TitledPane alignment="TOP_LEFT" animated="true" maxHeight="130.0" text="Brašna">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane maxHeight="130.0">
                            <children>
-                              <ListView fx:id="panelBrasny" maxHeight="125.0" onMouseClicked="#klikPanelBrasna"/>
+                              <ListView fx:id="panelBrasny" maxHeight="130.0" onMouseClicked="#klikPanelBrasna" />
                            </children></AnchorPane>
                      </content>
                   </TitledPane>
@@ -98,12 +99,13 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <TitledPane alignment="TOP_LEFT" animated="true" maxHeight="100.0" text="Položky">
+                  <TitledPane alignment="TOP_LEFT" animated="true" maxHeight="130.0" text="Položky v prostoru">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <AnchorPane maxHeight="130.0">
                            <children>
-                              <ListView fx:id="panelPolozek" maxHeight="100.0" onMouseClicked="#klikPanelPolozky" />
-                           </children></AnchorPane>
+                              <ListView fx:id="panelPolozek" maxHeight="130.0" onMouseClicked="#klikPanelPolozky" />
+                           </children>
+                        </AnchorPane>
                      </content>
                   </TitledPane>
                </children>

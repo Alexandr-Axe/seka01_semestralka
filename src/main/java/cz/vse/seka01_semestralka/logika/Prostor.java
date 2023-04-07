@@ -295,4 +295,12 @@ public class Prostor {
     {
         return seznamPolozek;
     }
+
+    /**
+     * @return získá seznam postav
+     */
+    public Collection<Postava> getSeznamPostav()
+    {
+        return seznamPostav;
+    }
 }
