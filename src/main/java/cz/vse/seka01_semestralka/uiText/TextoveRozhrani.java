@@ -5,13 +5,9 @@ import java.util.Scanner;
 import cz.vse.seka01_semestralka.logika.IHra;
 /**
  *  Class TextoveRozhrani
- * 
  *  Toto je uživatelského rozhraní aplikace Adventura
  *  Tato třída vytváří instanci třídy Hra, která představuje logiku aplikace.
  *  Čte vstup zadaný uživatelem a předává tento řetězec logice a vypisuje odpověď logiky na konzoli.
- *  
- *  
- *
  *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
  *@version    pro školní rok 2016/2017
  */
@@ -21,6 +17,7 @@ public class TextoveRozhrani {
 
     /**
      *  Vytváří hru.
+     * @param hra interface hra
      */
     public TextoveRozhrani(IHra hra) {
         this.hra = hra;

@@ -27,11 +27,6 @@ public class Brasna {
     public Brasna(int kapacitaBrasny){
         this.kapacitaBrasny = kapacitaBrasny;
         obsahBrasny = new HashSet<>();
-        /**
-         * zde vkládáme položky do brašny
-         *  @param  neco udává co chceme vložit
-         *  @return udává, zda se uspělo vložit věc nebo ne
-         */
     }
 
     /**

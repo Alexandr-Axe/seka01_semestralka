@@ -12,12 +12,8 @@ public class Postava {
     private String jmeno;
 
     /**
-     *  Vlastnost postavy - Interakce
-     *  To co postava řekne když jí potkáte.
-     */
-
-    /**
      *  Konstruktor postavy
+     * @param jmeno jméno postavy
      */
     public Postava(String jmeno)
     {
@@ -25,6 +21,7 @@ public class Postava {
     }
     /**
      *  Metoda na vrácení jména postavy
+     * @return vrací jméno postavy
      */
     public String getJmeno()
     {

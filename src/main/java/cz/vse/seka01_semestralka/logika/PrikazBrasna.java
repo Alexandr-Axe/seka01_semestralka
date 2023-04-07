@@ -16,6 +16,7 @@ public class PrikazBrasna implements IPrikaz{
     private HerniPlan plan;
     /**
      Předpis příkazu
+     @param plan herní plán
      */
     public PrikazBrasna(HerniPlan plan){
         this.plan = plan;

@@ -16,7 +16,7 @@ public class PrikazPoloz implements IPrikaz{
 
     /**
      * kosntruktor třídy PrikazPoloz
-     * @param plan
+     * @param plan herní plán
      */
 
     public PrikazPoloz(HerniPlan plan){
@@ -26,7 +26,7 @@ public class PrikazPoloz implements IPrikaz{
     /**
      * proveď příkaz
      * @param parametry počet parametrů závisí na daném příkazu
-     * @return
+     * @return provedený příkaz
      */
 
     @Override

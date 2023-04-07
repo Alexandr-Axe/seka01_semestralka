@@ -1,10 +1,12 @@
 package cz.vse.seka01_semestralka.main;
 
-import cz.vse.seka01_semestralka.logika.Polozka;
 import cz.vse.seka01_semestralka.logika.Postava;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.ImageView;
 
+/**
+ * Třída, ve které se nastavují obrázky postav
+ */
 public class ListCellPostava extends ListCell<Postava> {
     @Override
     protected void updateItem(Postava postava, boolean empty) {

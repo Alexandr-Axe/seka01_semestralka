@@ -21,8 +21,8 @@ public class PrikazPouzij implements IPrikaz{
     /**
      *
      * předpis příkazu
-     * @param plan
-     * @param hra
+     * @param plan herní plán
+     * @param hra hra
      */
     public PrikazPouzij(HerniPlan plan, Hra hra){
         this.plan = plan;

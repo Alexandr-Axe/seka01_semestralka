@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
@@ -162,7 +161,8 @@ public class HomeController {
     }
 
     /**
-     * @return ukončí hru předběžně
+     * ukončí hru předběžně
+     * @param actionEvent povinný nevyužitý parametr
      */
     public void ukoncitHru(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Opravdu chceš hru ukončit?");
@@ -222,6 +222,10 @@ public class HomeController {
         }
     }
 
+    /**
+     * @param mouseEvent povinný nevyužitý parametr
+     * zařizuje, co se stane po kliknutí na položku v panelu postav
+     */
     public void klikPanelPostav(MouseEvent mouseEvent) {
         Postava postava = panelPostav.getSelectionModel().getSelectedItem();
         String prikaz = "";

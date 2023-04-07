@@ -1,3 +1,6 @@
+/**
+ * moduly pro hru
+ */
 module cz.vse.seka01_semestralka {
     requires javafx.controls;
     requires javafx.fxml;

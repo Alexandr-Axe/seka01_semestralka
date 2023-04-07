@@ -1,7 +1,6 @@
 package cz.vse.seka01_semestralka.logika;
 
 import cz.vse.seka01_semestralka.main.Pozorovatel;
-import cz.vse.seka01_semestralka.main.PredmetPozorovani;
 import cz.vse.seka01_semestralka.main.ZmenaHry;
 
 import java.util.HashMap;
@@ -11,7 +10,6 @@ import java.util.Set;
 
 /**
  *  Třída Hra - třída představující logiku adventury.
- * 
  *  Toto je hlavní třída  logiky aplikace.  Tato třída vytváří instanci třídy HerniPlan, která inicializuje mistnosti hry
  *  a vytváří seznam platných příkazů a instance tříd provádějící jednotlivé příkazy.
  *  Vypisuje uvítací a ukončovací text hry.
@@ -119,7 +117,7 @@ public class Hra implements IHra {
 
     /**
      * @param epilog text epilogu
-     * @return nastavuje epilog
+     * nastavuje epilog
      */
     public void setEpilog(String epilog) {
         this.epilog = epilog;

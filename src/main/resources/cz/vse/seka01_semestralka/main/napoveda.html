@@ -3,11 +3,40 @@
 <head>
     <meta charset="utf-8"/>
     <title>Návod na hru O Červené Karkulce</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+	table td {
+   		font-size: 2em;
+	}
+    </style>
 </head>
 <body>
 <h1>Návod na hru O Červené Karkulce</h1>
 <p>Vítám vás u mojí hry O Červené Karkulce!</p>
-
 <h2>Pravidla hry</h2>
 <ul>
     <li>Cílem hry je dostat se s Červenou Karkulkou bezpečně do babiččina domu a udělat jí radost.</li>
@@ -15,10 +44,8 @@
     <li>Na cestě k babičce se Karkulka může setkat s vlkem.</li>
     <li>Postavy mohou mít pro Karkulku různé dopady na hru.</li>
     <li>Hra končí buď úspěchem, když Karkulka dorazí k babičce, nebo neúspěchem, když ji vlk sežere.</li>
-
     <li>Pro všechny zmíněné mechaniky je možné adventuru ovládat pomocí textu.</li>
 </ul>
-
 <h2>Tipy pro úspěšné dokončení hry</h2>
 <ol>
     <li>Snažte se pamatovat si, které postavy jsou pro Karkulku přátelské a které ne.</li>
@@ -26,7 +53,110 @@
     <li>Nepodceňujte taktiku a strategii.</li>
     <li>Pokud se zaseknete, nevzdávejte se a zkuste to znovu! Vždy můžete použít příkaz "nápověda".</li>
 </ol>
-
 <p>Tak co, jste připraveni se vydat na cestu s Červenou Karkulkou? Hodně štěstí!</p>
+
+<h2>Postavy</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Obrázek</th>
+            <th>Popis</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><img src="postavy/karkulka.png" alt="Červená Karkulka"></td>
+            <td>Červená Karkulka - hlavní hrdinka hry, jejím cílem je dostat se bezpečně k babičce.</td>
+        </tr>
+        <tr>
+            <td><img src="postavy/vlk.png" alt="Vlk"></td>
+            <td>Vlk - postava, která může představovat nebezpečí pro Červenou Karkulku.</td>
+        </tr>
+        <tr>
+            <td><img src="postavy/babicka.png" alt="Babička"></td>
+            <td>Babička - postava, ke které se Červená Karkulka snaží dorazit.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Prostory</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Obrázek</th>
+      <th>Název</th>
+      <th>Popis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="prostory/domeček.png" alt="Domeček"/></td>
+      <td>Domeček</td>
+      <td>Domeček, ve kterém začíná hra.</td>
+    </tr>
+    <tr>
+      <td><img src="prostory/les.png" alt="Les"/></td>
+      <td>Les</td>
+      <td>Hustý les, kterým se Karkulka musí projít, aby dorazila k babičce.</td>
+    </tr>
+    <tr>
+      <td><img src="prostory/hluboký_les.png" alt="Hluboký les"/></td>
+      <td>Hluboký les</td>
+      <td>Hluboký les, ve kterém na Karkulku číhá vlk.</td>
+    </tr>
+    <tr>
+      <td><img src="prostory/jeskyně.png" alt="Jeskyně"/></td>
+      <td>Jeskyně</td>
+      <td>Jeskyně, ve které Karkulka neobjeví nic.</td>
+    </tr>
+    <tr>
+      <td><img src="prostory/chaloupka.png" alt="Chaloupka"/></td>
+      <td>Chaloupka</td>
+      <td>Chaloupka, ve které bydlí babička.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Předměty</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Obrázek</th>
+      <th>Název</th>
+      <th>Místo výskytu</th>
+      <th>Popis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><img src="predmety/nuz.png" alt="Nůž"/></td>
+      <td>Nůž</td>
+      <td>Domeček</td>
+      <td>Nůž, kterým se můžeme bránit.</td>
+    </tr>
+    <tr>
+      <td><img src="predmety/babovka.png" alt="Bábovka"/></td>
+      <td>Bábovka</td>
+      <td>Domeček</td>
+      <td>Bábovka, kterou musíme donést babičce.</td>
+    </tr>
+    <tr>
+      <td><img src="predmety/maliny.png" alt="Maliny"/></td>
+      <td>Maliny</td>
+      <td>Les</td>
+      <td>Ozdravné maliny, které Karkulka potká v lese.</td>
+    </tr>
+    <tr>
+      <td><img src="predmety/proteza.png" alt="Protéza"/></td>
+      <td>Protéza</td>
+      <td>Domeček</td>
+      <td>Babiččina protéza, kterou už moc nepoužívá.</td>
+    </tr>
+  </tbody>
+</table>
+
 </body>
 </html>

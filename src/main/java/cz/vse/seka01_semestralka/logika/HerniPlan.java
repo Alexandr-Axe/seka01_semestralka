@@ -12,7 +12,6 @@ import java.util.Set;
 
 /**
  *  Class HerniPlan - třída představující mapu a stav adventury.
- * 
  *  Tato třída inicializuje prvky ze kterých se hra skládá:
  *  vytváří všechny prostory,
  *  propojuje je vzájemně pomocí východů 

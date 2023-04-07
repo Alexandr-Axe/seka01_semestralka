@@ -15,6 +15,7 @@ public class PrikazProstor implements IPrikaz{
     private HerniPlan plan;
     /**
      Předpis příkazu
+     @param plan herní plán
      */
     public PrikazProstor(HerniPlan plan)
     {
@@ -24,7 +25,7 @@ public class PrikazProstor implements IPrikaz{
     /**
      * proveď příkaz
      * @param parametry počet parametrů závisí na daném příkazu
-     * @return
+     * @return dlouhý popis aktuálního prostoru
      */
     public String provedPrikaz(String... parametry)
     {

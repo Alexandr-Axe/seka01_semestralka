@@ -9,7 +9,6 @@ import java.util.Map;
  *  a vrácení odkazu na třídu implementující konkrétní příkaz.
  *  Každý nový příkaz (instance implementující rozhraní Prikaz) se
  *  musí do seznamu přidat metodou vlozPrikaz.
- *
  *  Tato třída je součástí jednoduché textové hry.
  *
  *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova

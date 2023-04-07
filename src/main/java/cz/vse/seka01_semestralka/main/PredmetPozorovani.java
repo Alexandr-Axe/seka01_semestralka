@@ -8,7 +8,7 @@ public interface PredmetPozorovani
     /**
      * @param zmenaHry výčtový typ
      * @param pozorovatel observer
-     * @return registruje změnu
+     * registruje změnu
      */
     void registruj(ZmenaHry zmenaHry, Pozorovatel pozorovatel);
 }

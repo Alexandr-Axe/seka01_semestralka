@@ -5,13 +5,10 @@ import java.util.stream.Collectors;
 
 /**
  * Trida Prostor - popisuje jednotlivé prostory (místnosti) hry
- *
  * Tato třída je součástí jednoduché textové hry.
- *
  * "Prostor" reprezentuje jedno místo (místnost, prostor, ..) ve scénáři hry.
  * Prostor může mít sousední prostory připojené přes východy. Pro každý východ
  * si prostor ukládá odkaz na sousedící prostor.
- *
  * @author Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
  * @version pro školní rok 2016/2017
  */
@@ -58,9 +55,7 @@ public class Prostor {
      * Metoda equals pro porovnání dvou prostorů. Překrývá se metoda equals ze
      * třídy Object. Dva prostory jsou shodné, pokud mají stejný název. Tato
      * metoda je důležitá z hlediska správného fungování seznamu východů (Set).
-     *
      * Bližší popis metody equals je u třídy Object.
-     *
      * @param o object, který se má porovnávat s aktuálním
      * @return hodnotu true, pokud má zadaný prostor stejný název, jinak false
      */  
@@ -176,7 +171,7 @@ public class Prostor {
 
     /**
      * @param neco položka
-     * @return vloží položku
+     * vloží položku
      */
     public void vlozPolozku(Polozka neco) {
         seznamPolozek.add(neco);
@@ -231,7 +226,7 @@ public class Prostor {
 
     /**
      * @param nekdo postava, kterou vložíme do seznamu
-     * @return vloží postavu do seznamu
+     * vloží postavu do seznamu
      */
     public void vlozPostavu(Postava nekdo)
     {
