@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"m":"cz.vse.seka01_semestralka","l":"cz.vse.seka01_semestralka.logika"},{"m":"cz.vse.seka01_semestralka","l":"cz.vse.seka01_semestralka.main"},{"m":"cz.vse.seka01_semestralka","l":"cz.vse.seka01_semestralka.uiText"}];updateSearchResults();

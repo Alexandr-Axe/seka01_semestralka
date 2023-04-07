@@ -4,6 +4,9 @@ import cz.vse.seka01_semestralka.logika.Prostor;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.ImageView;
 
+/**
+ * Třída, ve které se nastavují obrázky východů
+ */
 public class ListCellProstor extends ListCell<Prostor> {
     @Override
     protected void updateItem(Prostor prostor, boolean empty) {

@@ -24,7 +24,7 @@ public class Prostor {
     private List<Postava> seznamPostav;
 
     /**
-     * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
+     * Vytvoreni prostoru se zadanym popisem, napr. "kuchyn", "hala", "travnik
      * před domem"
      *
      * @param nazev nazev prostoru, jednoznačný identifikátor, jedno slovo nebo
@@ -173,9 +173,19 @@ public class Prostor {
     {
         return Collections.unmodifiableCollection(vychody);
     }
+
+    /**
+     * @param neco položka
+     * @return vloží položku
+     */
     public void vlozPolozku(Polozka neco) {
         seznamPolozek.add(neco);
     }
+
+    /**
+     * @param jmenoPolozky jméno položky, které nás zajímá
+     * @return vrátí boolean, zda obsahuje položku, nebo ne
+     */
     public boolean obsahujePolozku(String jmenoPolozky) {
         for (Polozka neco : seznamPolozek) {
             if (neco.getJmeno().equals(jmenoPolozky)) {
@@ -184,6 +194,11 @@ public class Prostor {
         }
         return false;
     }
+
+    /**
+     * @param jmenoPolozky jméno položky
+     * @return vybere položku ze seznamu položek
+     */
     public Polozka vyberPolozku(String jmenoPolozky)
     {
         Polozka vybranaPolozka = null;
@@ -213,6 +228,11 @@ public class Prostor {
         }
         return seznam;
     }
+
+    /**
+     * @param nekdo postava, kterou vložíme do seznamu
+     * @return vloží postavu do seznamu
+     */
     public void vlozPostavu(Postava nekdo)
     {
         seznamPostav.add(nekdo);
@@ -226,6 +246,11 @@ public class Prostor {
         }
         return seznam;
     }
+
+    /**
+     * @param jmenoPostavy jméno postavy
+     * @return vrátí boolean, zda seznam postav obsahuje postavu
+     */
     public boolean obsahujePostavu(String jmenoPostavy)
     {
         for (Postava nekdo : seznamPostav) {
@@ -236,6 +261,11 @@ public class Prostor {
         }
         return false;
     }
+
+    /**
+     * @param jmenoPostavy jméno postavy
+     * @return vybere jméno postavy ze seznamu
+     */
     public Postava vyberPostavu(String jmenoPostavy)
     {
         Postava vybranaPostava = null;
@@ -257,6 +287,10 @@ public class Prostor {
     {
         return getNazev();
     }
+
+    /**
+     * @return získá seznam položek
+     */
     public Collection<Polozka> getSeznamPolozek()
     {
         return seznamPolozek;

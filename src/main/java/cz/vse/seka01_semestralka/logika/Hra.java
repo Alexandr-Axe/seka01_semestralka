@@ -116,6 +116,11 @@ public class Hra implements IHra {
         this.konecHry = konecHry;
         upozorniPozorovatele(ZmenaHry.KONEC_HRY);
     }
+
+    /**
+     * @param epilog text epilogu
+     * @return nastavuje epilog
+     */
     public void setEpilog(String epilog) {
         this.epilog = epilog;
     }

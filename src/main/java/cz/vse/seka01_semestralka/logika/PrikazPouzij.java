@@ -1,7 +1,7 @@
 package cz.vse.seka01_semestralka.logika;
 
 /**
- * Zde se nachází struktura příkazu použij, který zároveň ukončuje hru.
+ * Zde se nachazi struktura prikazu pouzij, ktery zaroven ukoncuje hru.
  */
 public class PrikazPouzij implements IPrikaz{
     /**

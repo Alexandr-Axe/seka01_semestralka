@@ -1,5 +1,3 @@
-/* Soubor je ulozen v kodovani UTF-8.
- * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package cz.vse.seka01_semestralka.main;
 
 import cz.vse.seka01_semestralka.logika.*;

@@ -116,10 +116,18 @@ public class HerniPlan implements PredmetPozorovani {
             pozorovatel.aktualizuj();
         }
     }
+
+    /**
+     * @return získá výherní prostor
+     */
     public Prostor getVyherniProstor()
     {
         return vyherniProstor;
     }
+
+    /**
+     * @return získá brašnu
+     */
     public Brasna getBrasna()
     {
         return brasna;

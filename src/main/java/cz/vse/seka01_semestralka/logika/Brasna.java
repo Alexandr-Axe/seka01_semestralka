@@ -35,9 +35,9 @@ public class Brasna {
     }
 
     /**
-     * metoda, vkládající položku do brašny
-     * @param neco
-     * @return
+     * metoda vkládající položku do brašny
+     * @param neco položka
+     * @return jestli se úspěšně povedlo předmět do brašny vložit
      */
     public boolean vlozDoBrasny(Polozka neco){
         if (this.obsahBrasny.size() < kapacitaBrasny){
@@ -51,6 +51,7 @@ public class Brasna {
      * zde vyndaváme položky z brašny
      *
      * @param jmeno udává co chceme vzít
+     * @return položka, kterou jsme vyndai
      */
     public Polozka vyndejZBrasny(String jmeno){
         for (Polozka neco: obsahBrasny){
@@ -88,6 +89,10 @@ public class Brasna {
         }
         return seznam.toString();
     }
+
+    /**
+     * @return  obsah brašny
+     */
     public Collection<Polozka> getSeznamPolozek() {
         return obsahBrasny;
     }

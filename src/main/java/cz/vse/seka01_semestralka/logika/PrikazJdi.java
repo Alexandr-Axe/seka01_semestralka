@@ -8,6 +8,9 @@ package cz.vse.seka01_semestralka.logika;
  *@version    pro školní rok 2016/2017
  */
 public class PrikazJdi implements IPrikaz {
+    /**
+     * Název příkazu
+     */
     public static final String NAZEV = "jdi";
     private HerniPlan plan;
     

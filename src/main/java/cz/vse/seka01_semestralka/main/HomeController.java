@@ -19,6 +19,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Hlavní třída ovládající javafx
+ */
 public class HomeController {
 
     @FXML
@@ -38,6 +41,9 @@ public class HomeController {
     private ObservableList<Prostor> seznamVychodu = FXCollections.observableArrayList();
     private ObservableList<Polozka> obsahBrasny = FXCollections.observableArrayList();
     private ObservableList<Polozka> obsahProstoru = FXCollections.observableArrayList();
+    /**
+     * obrázek hráče
+     */
     @FXML
     public ImageView hrac;
     private Map<String, Point2D> souradniceProstoru = new HashMap<>();
@@ -93,6 +99,10 @@ public class HomeController {
         seznamVychodu.clear();
         seznamVychodu.addAll(hra.getHerniPlan().getAktualniProstor().getVychody());
     }
+
+    /**
+     * aktualizuje konec hry
+     */
     public void aktualizujKonecHry()
     {
         if (hra.konecHry()){
@@ -119,6 +129,9 @@ public class HomeController {
         aktualizujObsahProstoru();
     }
 
+    /**
+     * @return ukončí hru předběžně
+     */
     public void ukoncitHru(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Opravdu chceš hru ukončit?");
         Optional<ButtonType> result = alert.showAndWait();
@@ -161,5 +174,19 @@ public class HomeController {
         if (cil == null) return;
         String prikaz = PrikazPoloz.JMENO + " " + cil.getJmeno();
         zpracujPrikaz(prikaz);
+    }
+
+    @FXML
+    private void restartKlik(ActionEvent actionEvent) {
+        Alert opakovat = new Alert(Alert.AlertType.CONFIRMATION, "Opravdu chceš restartovat hru?");
+        Optional<ButtonType> vysledek = opakovat.showAndWait();
+        if(vysledek.isPresent() && vysledek.get() == ButtonType.OK)
+        {
+            vystup.clear();
+            hra = new Hra();
+            initialize();
+            aktualizujPolohuHrace();
+            aktualizujKonecHry();
+        }
     }
 }

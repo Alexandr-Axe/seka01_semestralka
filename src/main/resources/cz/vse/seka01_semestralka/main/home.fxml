@@ -36,6 +36,7 @@
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#ukoncitHru" text="Ukončit" />
                         <MenuItem onAction="#napovedaKlik" text="Nápověda" />
+                        <MenuItem onAction="#restartKlik" text="Nová hra" />
                     </items>
                 </Menu>
             </menus>
