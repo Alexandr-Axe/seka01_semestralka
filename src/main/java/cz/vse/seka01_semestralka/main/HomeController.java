@@ -72,6 +72,7 @@ public class HomeController {
         panelVychodu.setCellFactory(param -> new ListCellProstor());
         panelBrasny.setCellFactory(param -> new ListCellPredmet());
         panelPolozek.setCellFactory(param -> new ListCellPredmet());
+        panelPostav.setCellFactory(param -> new ListCellPostava());
     }
 
     private void aktualizujSeznamPostav() {
@@ -250,6 +251,6 @@ public class HomeController {
                 break;
         }
         if (postava == null) return;
-        zpracujPrikaz(prikaz);
+        if (!prikaz.isEmpty()) zpracujPrikaz(prikaz);
     }
 }
