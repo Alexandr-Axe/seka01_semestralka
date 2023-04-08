@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.seka01_semestralka.main.HomeController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="800.0" prefWidth="1074.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.vse.seka01_semestralka.main.HomeController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" />
     </columnConstraints>
@@ -42,7 +42,7 @@
             </menus>
 
         </MenuBar>
-        <HBox spacing="10.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
+        <HBox prefWidth="1074.0" spacing="10.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3">
             <children>
                 <TextField fx:id="vstup" onAction="#poslatVstup" HBox.hgrow="ALWAYS">
                     <padding>
@@ -87,7 +87,7 @@
                   </TitledPane>
                   <Pane>
                      <children>
-                        <ImageView fitHeight="214.0" fitWidth="343.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="250.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@prostory/herniPlan.png" />
                            </image>

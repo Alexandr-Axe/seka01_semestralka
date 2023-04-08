@@ -99,11 +99,11 @@ public class HomeController {
     }
     private void vlozSouradnice()
     {
-        souradniceProstoru.put("domeček", new Point2D(14, 14));
-        souradniceProstoru.put("les", new Point2D(100, 14));
-        souradniceProstoru.put("hluboký_les", new Point2D(186, 14));
-        souradniceProstoru.put("jeskyně", new Point2D(271, 14));
-        souradniceProstoru.put("chaloupka", new Point2D(190, 100));
+        souradniceProstoru.put("domeček", new Point2D(40, 0));
+        souradniceProstoru.put("les", new Point2D(340, 0));
+        souradniceProstoru.put("hluboký_les", new Point2D(30, 100));
+        souradniceProstoru.put("jeskyně", new Point2D(140, 125));
+        souradniceProstoru.put("chaloupka", new Point2D(340, 100));
     }
     @FXML
     private void aktualizujSeznamVychodu()
