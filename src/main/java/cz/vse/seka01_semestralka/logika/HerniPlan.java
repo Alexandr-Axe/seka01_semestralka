@@ -84,6 +84,13 @@ public class HerniPlan implements PredmetPozorovani {
         domecek.vlozPolozku(nuz);
         chaloupka.vlozPolozku(proteza);
         les.vlozPolozku(maliny);
+
+        Polozka kamen = new Polozka("kamen", true);
+        Polozka krida = new Polozka("krida", true);
+        Polozka balvan = new Polozka("balvan", false);
+        jeskyne.vlozPolozku(kamen);
+        jeskyne.vlozPolozku(krida);
+        jeskyne.vlozPolozku(balvan);
                 
         aktualniProstor = domecek;  // hra začíná v domečku       
     }
