@@ -60,6 +60,7 @@ public class PrikazPouzij implements IPrikaz{
                       }
                       else
                       {
+                          hra.getHerniPlan().getAktualniProstor().vlozPostavu(new Postava("vlk"));
                           return "Při zkoušení babiččiny protézy někdo zaťukal na dveře. Rozhořčení jste\n"
                                   + "je otevřeli bez použití kukátka a ihned se setkali s vlkovým hněvem,\n"
                                   + "který zapříčinil smrt Karkulky i babičky.";
