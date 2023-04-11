@@ -43,6 +43,7 @@ public class HomeController {
     private ObservableList<Polozka> obsahBrasny = FXCollections.observableArrayList();
     private ObservableList<Polozka> obsahProstoru = FXCollections.observableArrayList();
     private ObservableList<Postava> postavyProstoru = FXCollections.observableArrayList();
+    private int kamenVstupy = 0;
     /**
      * obrázek hráče
      */
@@ -139,6 +140,7 @@ public class HomeController {
 
     private void zpracujPrikaz(String prikaz) {
         String vysledek = "";
+        String dodatek = "\nPočet kroků s kamenem: " + kamenVstupy;
         if (prikaz.equalsIgnoreCase("seber maliny"))
         {
             vystup.appendText("> " + prikaz + "\n");
@@ -151,9 +153,22 @@ public class HomeController {
         }
         else
         {
-            vystup.appendText("> " + prikaz + "\n");
-            vysledek = hra.zpracujPrikaz(prikaz);
-            vystup.appendText(vysledek + "\n\n");
+            if (kamenVstupy < 3) {
+                vystup.appendText("> " + prikaz + "\n");
+                vysledek = hra.zpracujPrikaz(prikaz);
+                if (!hra.getHerniPlan().getBrasna().obsahujePolozku("kamen"))
+                    dodatek = "";
+                vystup.appendText(vysledek + dodatek + "\n\n");
+            }
+            else
+            {
+                vystup.appendText("> " + prikaz + "\n");
+                vystup.appendText("Už jsi moc unavený z tahání kamene, proto jsi ho položil.\n");
+                prikaz = "poloz kamen";
+                vystup.appendText("> " + prikaz + "\n");
+                vysledek = hra.zpracujPrikaz(prikaz);
+                vystup.appendText(vysledek + "\n\n");
+            }
         }
         aktualizujObsahBrasny();
         aktualizujObsahProstoru();
@@ -179,6 +194,8 @@ public class HomeController {
         Prostor cil = panelVychodu.getSelectionModel().getSelectedItem();
         if (cil == null) return;
         String prikaz = PrikazJdi.NAZEV + " " + cil.getNazev();
+        if (hra.getHerniPlan().getBrasna().obsahujePolozku("kamen")) kamenVstupy++;
+        else kamenVstupy = 0;
         zpracujPrikaz(prikaz);
     }
     @FXML
