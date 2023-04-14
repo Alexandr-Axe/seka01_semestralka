@@ -12,7 +12,7 @@ public class Brasna {
     /**
      * udává kapacitu brašny
      */
-    private int kapacitaBrasny;
+    public int kapacitaBrasny;
 
     /**
      * vytváří se obsah brašny

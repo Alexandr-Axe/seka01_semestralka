@@ -77,7 +77,7 @@
          <content>
             <HBox alignment="TOP_CENTER">
                <children>
-                  <TitledPane alignment="TOP_LEFT" animated="true" maxHeight="130.0" text="Brašna">
+                  <TitledPane alignment="TOP_LEFT" animated="true" maxHeight="130.0" text="Brašna" fx:id="brasnaObjem">
                      <content>
                         <AnchorPane maxHeight="130.0">
                            <children>
@@ -99,7 +99,7 @@
                         </ImageView>
                      </children>
                   </Pane>
-                  <TitledPane alignment="TOP_LEFT" animated="true" maxHeight="130.0" text="Položky v prostoru">
+                  <TitledPane alignment="TOP_LEFT" animated="true" maxHeight="130.0" text="Položky v prostoru" fx:id="polozkyObjem">
                      <content>
                         <AnchorPane maxHeight="130.0">
                            <children>

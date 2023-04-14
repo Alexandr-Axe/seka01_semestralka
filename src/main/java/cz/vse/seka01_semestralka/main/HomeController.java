@@ -22,6 +22,10 @@ import java.util.Optional;
  * Hlavní třída ovládající javafx
  */
 public class HomeController {
+    @FXML
+    private TitledPane brasnaObjem;
+    @FXML
+    private TitledPane polozkyObjem;
 
     @FXML
     private ListView<Prostor> panelVychodu;
@@ -73,6 +77,14 @@ public class HomeController {
         panelBrasny.setCellFactory(param -> new ListCellPredmet());
         panelPolozek.setCellFactory(param -> new ListCellPredmet());
         panelPostav.setCellFactory(param -> new ListCellPostava());
+        aktualizujBrasnuAPolozky();
+    }
+    private void aktualizujBrasnuAPolozky()
+    {
+        int pocet = obsahBrasny.size();
+        int zbyva = hra.getHerniPlan().getBrasna().kapacitaBrasny - pocet;
+        brasnaObjem.setText("Brašna: " + pocet + " předmětů, " + zbyva + " zbývají.");
+        polozkyObjem.setText("Počet položek: " + obsahProstoru.size());
     }
 
     private void aktualizujSeznamPostav() {
@@ -173,6 +185,7 @@ public class HomeController {
         aktualizujObsahBrasny();
         aktualizujObsahProstoru();
         aktualizujSeznamPostav();
+        aktualizujBrasnuAPolozky();
     }
 
     /**
